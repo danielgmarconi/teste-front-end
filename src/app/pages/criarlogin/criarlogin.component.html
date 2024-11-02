@@ -1,4 +1,4 @@
-<div class="row" [hidden]="modalCriarLogin">
+<div class="row">
   <div class="col-5 mx-auto">
     <div class="card shadow border">
       <div class="card-body d-flex flex-column align-items-left">
@@ -10,20 +10,29 @@
         </div>
         <br>
         <div class="form-group">
+          <label for="exampleInputEmail1">Codigo de Verificação</label>
+          <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Código">
+        </div>
+        <br>
+        <div class="form-group">
           <label for="exampleInputPassword1">Senha</label>
           <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Senha">
         </div>
         <br>
+        <div class="form-group">
+          <label for="exampleInputPassword1">Repetir Senha</label>
+          <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Repetir Senha">
+        </div>
+        <br>
         <div class="row">
           <div class="col-3 mx-auto">
-            <button type="submit" class="btn btn-light">Entrar</button>
+            <button type="submit" class="btn btn-secondary">Criar</button>
           </div>
           <div class="col-4 mx-auto">
-            <button type="submit" class="btn btn-light" (click)="criarNovoLogin()">Novo Usuario</button>
+            <button type="submit" class="btn btn-secondary">Cancelar</button>
           </div>
         </div>
       </div>
     </div>
   </div>
 </div>
-<app-criarlogin [hidden]="!modalCriarLogin"></app-criarlogin>
