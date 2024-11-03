@@ -6,17 +6,17 @@
         <br>
         <div class="form-group">
           <label for="exampleInputEmail1">Usuario</label>
-          <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Email">
+          <input type="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Email" [(ngModel)]="entity.email">
         </div>
         <br>
         <div class="form-group">
           <label for="exampleInputPassword1">Senha</label>
-          <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Senha">
+          <input type="password" class="form-control" id="Senha" placeholder="Senha"[(ngModel)]="entity.senha">
         </div>
         <br>
         <div class="row">
           <div class="col-3 mx-auto">
-            <button type="submit" class="btn btn-light"(click)="entrar()">Entrar</button>
+            <button type="submit" class="btn btn-light" (click)="entrar()">Entrar</button>
           </div>
           <div class="col-4 mx-auto">
             <button type="submit" class="btn btn-light" (click)="criarNovoLogin()">Novo Usuario</button>

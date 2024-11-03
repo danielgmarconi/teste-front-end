@@ -7,4 +7,12 @@
   <div class="col-xs-6 col-sm-3">
     <h1><b>Administração RH</b></h1>
   </div>
+  @if(statusLogin){
+  <div class="col-xs-6 col-sm-3"><b>{{emailUsuario}}</b></div>
+  <div class="col-xs-6 col-sm-3">
+    <button type="submit" class="btn btn-secondary" (click)="cadastroUsuario()">Usuarios</button>
+    &nbsp;&nbsp;&nbsp;&nbsp;
+    <button type="submit" class="btn btn-secondary" (click)="sair()">Sair</button>
+  </div>
+  }
 </nav>

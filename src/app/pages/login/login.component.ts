@@ -4,17 +4,23 @@ import { AutorizacaoLoginService } from '../../services/autorizacaologin.service
 import { Router } from '@angular/router';
 import { AutorizacaoService } from '../../services/autorizacao.service';
 import { ToastrService } from 'ngx-toastr';
+import { AutorizacaoResponse } from '../../model/autorizacaoResponse';
+import { FormsModule } from '@angular/forms';
+import { AutorizacaoUsuario } from '../../model/autorizacaoUsuario';
+
 
 
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [CriarloginComponent],
+  imports: [CriarloginComponent, FormsModule],
   templateUrl: './login.component.html'
 })
 export class LoginComponent {
 
+  entity = <AutorizacaoUsuario>{};
   modalCriarLogin:boolean = false
+  public aaa: string ="";
 
   constructor(private router:Router,
               private toastr: ToastrService,
@@ -24,9 +30,15 @@ export class LoginComponent {
   }
   entrar()
   {
-    this.autorizacaoService.autenticacaoUsuario('damielgmarconi@gmail.com', '@Daniel1231').subscribe(
+    this.autorizacaoService.autenticacaoUsuario(this.entity).subscribe(
       (response) => {
-
+        this.toastr.success("Autenticado com sucesso.","Atenção");
+        let resultado: AutorizacaoResponse = <AutorizacaoResponse>response.resposta;
+        localStorage.setItem("email", resultado.email);
+        localStorage.setItem("tokenUsuario", resultado.tokenUsuario);
+        localStorage.setItem("tokenRenovacao", resultado.tokenRenovacao);
+        this.autorizacaoLoginService.autorizarLogin();
+        this.router.navigate(['home']);
       },(error) =>{
         if(error.status == 401)
           this.toastr.warning("Acesso não autorizado.","Atenção");
@@ -36,9 +48,6 @@ export class LoginComponent {
   }
   criarNovoLogin()
   {
-    // this.autorizacaoLoginService.autorizarLogin();
-    // this.router.navigate(['home']);
-    //this.modalCriarLogin = true;
-
+    this.modalCriarLogin = true;
   }
 }
