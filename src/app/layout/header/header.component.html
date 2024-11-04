@@ -8,8 +8,8 @@
     <h1><b>Administração RH</b></h1>
   </div>
 
-  <div class="col-xs-6 col-sm-3" [hidden]="!statusLogin"><b>{{emailUsuario}}</b></div>
-  <div class="col-xs-6 col-sm-3">
+  <div class="col-xs-6 col-sm-3" id="divEmail" style="display: none;"><b>{{emailUsuario}}</b></div>
+  <div class="col-xs-6 col-sm-3" id="divBotoes" style="display: none;">
     <button type="submit" class="btn btn-secondary" (click)="cadastroUsuario()">Usuarios</button>
     &nbsp;&nbsp;&nbsp;&nbsp;
     <button type="submit" class="btn btn-secondary" (click)="sair()">Sair</button>

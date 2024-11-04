@@ -2,6 +2,7 @@ import { Routes } from '@angular/router';
 import { HomeComponent } from './pages/home/home.component';
 import { LoginComponent } from './pages/login/login.component';
 import { autorizadoGuard } from './guard/autorizado.guard';
+import { CriarloginComponent } from './pages/criarlogin/criarlogin.component';
 
 export const routes: Routes = [
   {
@@ -17,6 +18,10 @@ export const routes: Routes = [
   {
     path: 'login',
     component: LoginComponent
+  },
+  {
+    path: 'criarlogin',
+    component: CriarloginComponent
   },
   {
     path: '***',

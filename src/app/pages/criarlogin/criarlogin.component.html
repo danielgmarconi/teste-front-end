@@ -10,11 +10,6 @@
         </div>
         <br>
         <div class="form-group">
-          <label for="exampleInputEmail1">Codigo de Verificação</label>
-          <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Código">
-        </div>
-        <br>
-        <div class="form-group">
           <label for="exampleInputPassword1">Senha</label>
           <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Senha">
         </div>
@@ -26,10 +21,10 @@
         <br>
         <div class="row">
           <div class="col-3 mx-auto">
-            <button type="submit" class="btn btn-secondary">Criar</button>
+            <button type="submit" class="btn btn-light" (click)="criar()">Criar</button>
           </div>
           <div class="col-4 mx-auto">
-            <button type="submit" class="btn btn-secondary">Cancelar</button>
+            <button type="submit" class="btn btn-light" (click)="cancelar()">Cancelar</button>
           </div>
         </div>
       </div>
