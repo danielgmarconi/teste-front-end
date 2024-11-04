@@ -1,0 +1,43 @@
+<div class="row">
+  <div class="col-10 mx-auto">
+    <div class="card shadow border">
+      <div class="card-body d-flex flex-column align-items-left">
+        <h5 class="card-title"><b>Lista Usuário</b></h5>
+        <br>
+        <div class="row">
+          <div class="col-10 mx-auto">
+            <div class="form-group">
+              <label>Usuario</label>
+              <input type="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Email" [(ngModel)]="email">
+            </div>
+            <br>
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th scope="col">ID</th>
+                  <th scope="col">Email</th>
+                  <th scope="col">Senha</th>
+                </tr>
+              </thead>
+              <tbody>
+                @for (item of lista; track item.id) {
+                <tr>
+                    <th scope="row">{{item.id}}</th>
+                    <td>{{item.email}}</td>
+                    <td>{{item.senha}}</td>
+                </tr>
+                }
+              </tbody>
+            </table>
+          </div>
+          <div class="col-2 mx-auto">
+            <div class="form-group">
+              <br>
+              <button type="submit" class="btn btn-light" (click)="buscar()">Buscar</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -43,6 +43,6 @@ export class HeaderComponent implements OnInit {
   }
   cadastroUsuario()
   {
-
+    this.router.navigate(['usuariolista']);
   }
 }

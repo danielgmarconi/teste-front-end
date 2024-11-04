@@ -3,6 +3,7 @@ import { HomeComponent } from './pages/home/home.component';
 import { LoginComponent } from './pages/login/login.component';
 import { autorizadoGuard } from './guard/autorizado.guard';
 import { CriarloginComponent } from './pages/criarlogin/criarlogin.component';
+import { UsuarioListaComponent } from './pages/usuario-lista/usuario-lista.component';
 
 export const routes: Routes = [
   {
@@ -13,6 +14,11 @@ export const routes: Routes = [
   {
     path: 'home',
     component: HomeComponent,
+    canActivate:[autorizadoGuard]
+  },
+  {
+    path: 'usuariolista',
+    component: UsuarioListaComponent,
     canActivate:[autorizadoGuard]
   },
   {
