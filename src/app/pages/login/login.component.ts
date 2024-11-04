@@ -13,7 +13,7 @@ declare var $:any;
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [CriarloginComponent, FormsModule],
+  imports: [FormsModule],
   templateUrl: './login.component.html'
 })
 export class LoginComponent {
