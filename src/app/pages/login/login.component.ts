@@ -5,8 +5,9 @@ import { Router } from '@angular/router';
 import { AutorizacaoService } from '../../services/autorizacao.service';
 import { ToastrService } from 'ngx-toastr';
 import { AutorizacaoResponse } from '../../model/autorizacaoResponse';
-import { FormsModule } from '@angular/forms';
+import { FormGroup, FormsModule } from '@angular/forms';
 import { AutorizacaoUsuario } from '../../model/autorizacaoUsuario';
+import { HeaderComponent } from '../../layout/header/header.component';
 
 
 
@@ -19,9 +20,7 @@ import { AutorizacaoUsuario } from '../../model/autorizacaoUsuario';
 export class LoginComponent {
 
   entity = <AutorizacaoUsuario>{};
-  modalCriarLogin:boolean = false
-  public aaa: string ="";
-
+  modalCriarLogin:boolean = false;
   constructor(private router:Router,
               private toastr: ToastrService,
               private autorizacaoLoginService:AutorizacaoLoginService,
@@ -39,6 +38,7 @@ export class LoginComponent {
         localStorage.setItem("tokenRenovacao", resultado.tokenRenovacao);
         this.autorizacaoLoginService.autorizarLogin();
         this.router.navigate(['home']);
+        //$("#hide")
       },(error) =>{
         if(error.status == 401)
           this.toastr.warning("Acesso não autorizado.","Atenção");

@@ -9,8 +9,8 @@ import { AutorizacaoUsuario } from '../model/autorizacaoUsuario';
 })
 export class AutorizacaoService {
 
-  private url = environment.WebApiAutorizacao;
-  private openId = environment.AutorizacaoOpenId;
+  private url = environment.webApi;
+  private openId = environment.openId;
   constructor(private httpClient: HttpClient) { }
   autenticacaoUsuario(entity: AutorizacaoUsuario): Observable<any>
   {
