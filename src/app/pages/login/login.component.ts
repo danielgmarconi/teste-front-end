@@ -18,7 +18,7 @@ declare var $:any;
 })
 export class LoginComponent {
 
-  entity = <AutorizacaoUsuario>{};
+  entity = <AutorizacaoUsuario>{ email:'', senha:''};
   constructor(private router:Router,
               private toastr: ToastrService,
               private autorizacaoLoginService:AutorizacaoLoginService,
@@ -27,24 +27,31 @@ export class LoginComponent {
   }
   entrar()
   {
-    this.autorizacaoService.autenticacaoUsuario(this.entity).subscribe(
-      (response) => {
-        this.toastr.success("Autenticado com sucesso.","Atenção");
-        let resultado: AutorizacaoResponse = <AutorizacaoResponse>response.resposta;
-        localStorage.setItem("email", resultado.email);
-        localStorage.setItem("tokenUsuario", resultado.tokenUsuario);
-        localStorage.setItem("tokenRenovacao", resultado.tokenRenovacao);
-        this.autorizacaoLoginService.autorizarLogin();
-        this.router.navigate(['home']);
-        $("#divEmail").html('<b>Bem vindo ' + resultado.email + '</b>');
-        $("#divEmail").show();
-        $("#divBotoes").show();
-      },(error) =>{
-        if(error.status == 401)
-          this.toastr.warning("Acesso não autorizado.","Atenção");
-        else
-          this.toastr.error("Erro interno contate o administrador.","Atenção");
-      });
+    if(this.entity.email.length == 0)
+      this.toastr.warning("Preencher o Usuario.","Atenção");
+    else if(this.entity.senha.length == 0)
+      this.toastr.warning("Preencher o Senha.","Atenção");
+    else
+    {
+      this.autorizacaoService.autenticacaoUsuario(this.entity).subscribe(
+        (response) => {
+          this.toastr.success("Autenticado com sucesso.","Atenção");
+          let resultado: AutorizacaoResponse = <AutorizacaoResponse>response.resposta;
+          localStorage.setItem("email", resultado.email);
+          localStorage.setItem("tokenUsuario", resultado.tokenUsuario);
+          localStorage.setItem("tokenRenovacao", resultado.tokenRenovacao);
+          this.autorizacaoLoginService.autorizarLogin();
+          this.router.navigate(['home']);
+          $("#divEmail").html('<b>Bem vindo ' + resultado.email + '</b>');
+          $("#divEmail").show();
+          $("#divBotoes").show();
+        },(error) =>{
+          if(error.status == 401)
+            this.toastr.warning("Acesso não autorizado.","Atenção");
+          else
+            this.toastr.error("Erro interno contate o administrador.","Atenção");
+        });
+    }
   }
   criarNovoLogin()
   {
